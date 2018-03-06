@@ -1,14 +1,10 @@
 buildscript {
     ext {
-<<<<<<< HEAD
-        springBootVersion = "1.4.2.RELEASE"
-=======
         springBootVersion = "1.4.3.RELEASE"
         springVersion = "4.3.4.RELEASE"
 
         hibernateVersion = "5.0.11.Final"
         slf4jVersion = "1.7.21"
->>>>>>> apps-movie-fun-modernization-code-multiplejars
     }
 
     repositories {
@@ -17,11 +13,7 @@ buildscript {
 
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
-<<<<<<< HEAD
-        classpath 'org.cloudfoundry:cf-gradle-plugin:1.0.4'
-=======
         classpath "org.cloudfoundry:cf-gradle-plugin:1.0.4"
->>>>>>> apps-movie-fun-modernization-code-multiplejars
     }
 }
 
@@ -31,39 +23,6 @@ repositories {
     mavenCentral()
 }
 
-<<<<<<< HEAD
-apply plugin: "java"
-apply plugin: "war"
-apply plugin: "org.springframework.boot"
-apply plugin: 'cloudfoundry'
-
-group = "org.superbiz"
-version = "1.1.0-SNAPSHOT"
-
-description = "OpenEJB :: Web Examples :: Moviefun"
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
-dependencies {
-    compile "taglibs:standard:1.1.2"
-    compile "org.springframework.boot:spring-boot-starter-web"
-    compile "org.springframework.boot:spring-boot-starter-tomcat"
-    compile "org.springframework.boot:spring-boot-starter-data-jpa"
-    compile "mysql:mysql-connector-java:5.1.40"
-    compile "com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.7.0"
-    compile "commons-lang:commons-lang:2.4"
-    compile "org.apache.tika:tika-core:1.14"
-    compile "com.amazonaws:aws-java-sdk:1.11.74"
-
-    compile "javax.servlet:jstl:1.2"
-    compile "org.apache.tomee:javaee-api:7.0"
-    compile "org.apache.tomcat.embed:tomcat-embed-jasper:8.5.6"
-    compile "org.apache.geronimo.specs:geronimo-osgi-locator:1.1"
-    compile "org.apache.geronimo.components:geronimo-jaspi:2.0.0"
-
-    testCompile "junit:junit:4.12"
-=======
 group = "org.superbiz"
 version = "1.1.0-SNAPSHOT"
 
@@ -107,20 +66,12 @@ task dependenciesGraph(dependsOn: "dependenciesGraphDot", type: Exec) {
 
 task clean(type: Delete) {
     delete "build"
->>>>>>> apps-movie-fun-modernization-code-multiplejars
 }
 
 cloudfoundry {
     target = "https://api.sys.longs.pal.pivotal.io"
     space = "sandbox"
     application = "moviefun"
-<<<<<<< HEAD
-    file = file("build/libs/moviefun-1.1.0-SNAPSHOT.war")
-    uri = "moviefun-nice-wildebeest.apps.longs.pal.pivotal.io"
-    memory = 1024
-    instances = 1
-}
-=======
     file = file("applications/movie-fun-app/build/libs/movie-fun-app-1.1.0-SNAPSHOT.war")
     uri = "moviefun-nice-wildebeest.apps.longs.pal.pivotal.io"
     memory = 1024
@@ -128,4 +79,3 @@ cloudfoundry {
 }
 
 defaultTasks "clean", "build", "dependenciesGraph"
->>>>>>> apps-movie-fun-modernization-code-multiplejars
