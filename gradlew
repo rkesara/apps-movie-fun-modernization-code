@@ -33,11 +33,19 @@ DEFAULT_JVM_OPTS=""
 # Use the maximum available, or set MAX_FD != -1 to use that value.
 MAX_FD="maximum"
 
+<<<<<<< HEAD
 warn () {
     echo "$*"
 }
 
 die () {
+=======
+warn ( ) {
+    echo "$*"
+}
+
+die ( ) {
+>>>>>>> apps-movie-fun-modernization-code-multiplejars
     echo
     echo "$*"
     echo
@@ -155,7 +163,11 @@ if $cygwin ; then
 fi
 
 # Escape application args
+<<<<<<< HEAD
 save () {
+=======
+save ( ) {
+>>>>>>> apps-movie-fun-modernization-code-multiplejars
     for i do printf %s\\n "$i" | sed "s/'/'\\\\''/g;1s/^/'/;\$s/\$/' \\\\/" ; done
     echo " "
 }

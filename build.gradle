@@ -1,6 +1,14 @@
 buildscript {
     ext {
+<<<<<<< HEAD
         springBootVersion = "1.4.2.RELEASE"
+=======
+        springBootVersion = "1.4.3.RELEASE"
+        springVersion = "4.3.4.RELEASE"
+
+        hibernateVersion = "5.0.11.Final"
+        slf4jVersion = "1.7.21"
+>>>>>>> apps-movie-fun-modernization-code-multiplejars
     }
 
     repositories {
@@ -9,7 +17,11 @@ buildscript {
 
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
+<<<<<<< HEAD
         classpath 'org.cloudfoundry:cf-gradle-plugin:1.0.4'
+=======
+        classpath "org.cloudfoundry:cf-gradle-plugin:1.0.4"
+>>>>>>> apps-movie-fun-modernization-code-multiplejars
     }
 }
 
@@ -19,6 +31,7 @@ repositories {
     mavenCentral()
 }
 
+<<<<<<< HEAD
 apply plugin: "java"
 apply plugin: "war"
 apply plugin: "org.springframework.boot"
@@ -50,14 +63,69 @@ dependencies {
     compile "org.apache.geronimo.components:geronimo-jaspi:2.0.0"
 
     testCompile "junit:junit:4.12"
+=======
+group = "org.superbiz"
+version = "1.1.0-SNAPSHOT"
+
+description = "Web Examples :: Moviefun"
+
+
+task dependenciesGraphDot {
+
+    mustRunAfter "clean"
+
+    def graphBuildDir = "build/dependenciesGraph"
+    def dotFile = file "$graphBuildDir/graph.dot"
+
+    doLast {
+        delete graphBuildDir
+        mkdir graphBuildDir
+
+        dotFile << "digraph dependencies {\n"
+
+        project.subprojects.forEach { Project subProject ->
+            try {
+
+                Configuration compileConfig = subProject.configurations["compile"]
+
+                compileConfig
+                        .dependencies
+                        .grep { it.respondsTo("getDependencyProject") }
+                        .forEach { dotFile << """  "$subProject.name" -> "$it.dependencyProject.name"\n""" }
+            } catch (UnknownConfigurationException ignored) {
+            }
+        }
+        dotFile << "}\n"
+    }
+}
+
+task dependenciesGraph(dependsOn: "dependenciesGraphDot", type: Exec) {
+    workingDir "$project.buildDir/dependenciesGraph"
+    commandLine "dot", "-O", "-Tpng", "graph.dot"
+}
+
+
+task clean(type: Delete) {
+    delete "build"
+>>>>>>> apps-movie-fun-modernization-code-multiplejars
 }
 
 cloudfoundry {
     target = "https://api.sys.longs.pal.pivotal.io"
     space = "sandbox"
     application = "moviefun"
+<<<<<<< HEAD
     file = file("build/libs/moviefun-1.1.0-SNAPSHOT.war")
     uri = "moviefun-nice-wildebeest.apps.longs.pal.pivotal.io"
     memory = 1024
     instances = 1
 }
+=======
+    file = file("applications/movie-fun-app/build/libs/movie-fun-app-1.1.0-SNAPSHOT.war")
+    uri = "moviefun-nice-wildebeest.apps.longs.pal.pivotal.io"
+    memory = 1024
+    instances = 1
+}
+
+defaultTasks "clean", "build", "dependenciesGraph"
+>>>>>>> apps-movie-fun-modernization-code-multiplejars
