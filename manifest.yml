@@ -4,20 +4,20 @@ instances: 1
 applications:
 - name: album-service
   routes:
-  - route: album-service-rkesara.apps.long.pal.pivotal.io
+  - route: album-service-rkesara.apps.longs.pal.pivotal.io
   path: applications/album-service/build/libs/album-service-1.1.0-SNAPSHOT.jar
   services:
   - album-database
 - name: movie-service
   routes:
-  - route: movie-service-rkesara.apps.long.pal.pivotal.io
+  - route: movie-service-rkesara.apps.longs.pal.pivotal.io
   path: applications/movie-service/build/libs/movie-service-1.1.0-SNAPSHOT.jar
   services:
   - movie-database
 - name: movie-fun-app
   routes:
-  - route: movie-fun-app-rkesara.apps.long.pal.pivotal.io
+  - route: movie-fun-app-rkesara.apps.longs.pal.pivotal.io
   path: applications/movie-fun-app/build/libs/movie-fun-app-1.1.0-SNAPSHOT.war
   env:
-    ALBUMS_URL: http://album-service-rkesara.apps.long.pal.pivotal.io/albums
-    MOVIES_URL: http://movie-service-rkesara.apps.long.pal.pivotal.io/movies
+    ALBUMS_URL: https://album-service-rkesara.apps.longs.pal.pivotal.io/albums
+    MOVIES_URL: http://movie-service-rkesara.apps.longs.pal.pivotal.io/movies
