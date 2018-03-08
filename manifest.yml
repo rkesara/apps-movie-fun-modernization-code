@@ -8,7 +8,7 @@ applications:
     - route: album-service-rkesara.apps.longs.pal.pivotal.io
   services:
   - album-database
-  - movie-fun-sso
+#  - movie-fun-sso
   - movie-fun-registry
   env:
     GRANT_TYPE: client_credentials
@@ -19,7 +19,7 @@ applications:
     - route: movie-service-rkesara.apps.longs.pal.pivotal.io
   services:
   - movie-database
-  - movie-fun-sso
+#  - movie-fun-sso
   - movie-fun-registry
   env:
       GRANT_TYPE: client_credentials
@@ -29,5 +29,5 @@ applications:
   routes:
     - route: movie-fun-app-rkesara.apps.longs.pal.pivotal.io
   services:
-  - movie-fun-sso
+#  - movie-fun-sso
   - movie-fun-registry
