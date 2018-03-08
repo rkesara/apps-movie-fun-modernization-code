@@ -1,6 +1,7 @@
 package org.superbiz.moviefun;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestOperations;
@@ -14,12 +15,12 @@ public class ClientConfiguration {
     @Value("${movies.url}") String moviesUrl;
 
     @Bean
-    public AlbumsClient albumsClient(RestOperations restOperations) {
+    public AlbumsClient albumsClient(@LoadBalanced RestOperations restOperations) {
         return new AlbumsClient(albumsUrl, restOperations);
     }
 
     @Bean
-    public MoviesClient moviesClient(RestOperations restOperations) {
+    public MoviesClient moviesClient(@LoadBalanced RestOperations restOperations) {
         return new MoviesClient(moviesUrl, restOperations);
     }
 }

@@ -6,6 +6,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/movies")
+
 public class MoviesController {
 
     private MoviesRepository moviesRepository;
