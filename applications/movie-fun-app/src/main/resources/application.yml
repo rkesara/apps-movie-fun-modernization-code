@@ -8,11 +8,15 @@ logging.level:
   org.superbiz.moviefun: DEBUG
 
 s3:
-  accessKey: <access key id>
-  secretKey: <secret access key>
-  bucketName: <name of the bucket>
+  accessKey: AKIAJ4MFRP36JV26WZPA
+  secretKey: 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
+  bucketName: cf-0a05c016-b498-4ee4-95e8-9f40ceb861e2
+  endpointUrl: http://cf-0a05c016-b498-4ee4-95e8-9f40ceb861e2.s3.amazonaws.com
 
 albums:
-  url: http://localhost:8081/albums
+  url: https://album-service-rkesara.apps.longs.pal.pivotal.io/albums
 movies:
-  url: http://localhost:8082/movies
+  url: https://movie-service-rkesara.apps.longs.pal.pivotal.io/movies
+security:
+  basic:
+    enabled: false
